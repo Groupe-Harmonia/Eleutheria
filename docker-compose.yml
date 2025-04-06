@@ -1,0 +1,69 @@
+services:
+  app:
+    build:
+      context: .
+    restart: unless-stopped
+
+    environment:
+      - ELEUTHERIA_APP_SECRET_KEY
+      - ELEUTHERIA_APP_UPGRADE_KEY
+    secrets:
+      - db-password
+
+    ports:
+      # Si non défini, port 55555
+      - ${ELEUTHERIA_APP_PORT:-55555}:80
+    labels:
+      - com.centurylinklabs.watchtower.enable=false
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://127.0.0.1:80"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    volumes:
+      - app_images:/var/www/html/images
+      - app_deleted_images:/var/www/data/deleted_images
+      # Commentez cette ligne pour pouvoir initialiser la base de données en ligne. Puis suivez :
+      # https://stackoverflow.com/questions/68267224/how-to-script-initializing-the-mediawiki-database-when-localsettings-php-already
+      # Les valeurs qui sont données ne sont pas importantes, sauf utilisatrices et connections à la base.
+      - $ELEUTHERIA_APP_LOCAL_SETTINGS:/var/www/html/LocalSettings.php
+    depends_on:
+      db:
+        condition: service_healthy
+
+  db:
+    image: mariadb
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "healthcheck.sh", "--connect", "--innodb_initialized"]
+      start_period: 3s
+      start_interval: 2s
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    ports:
+      - 3306:3306
+
+    environment:
+      # @see https://phabricator.wikimedia.org/source/mediawiki/browse/master/includes/DefaultSettings.php
+      MYSQL_DATABASE: eleutheria
+      MYSQL_USER: app
+      MYSQL_PASSWORD: $ELEUTHERIA_DB_PASSWORD
+      MYSQL_RANDOM_ROOT_PASSWORD: 'yes'
+    volumes:
+      - db:/var/lib/mysql
+      - ./services/mariadb/init-user.sh:/docker-entrypoint-initdb.d/init-user.sh
+    secrets:
+      - db-password
+      - db-ro-password
+
+volumes:
+  app_images:
+  app_deleted_images:
+  db:
+
+secrets:
+  db-password:
+    environment: ELEUTHERIA_DB_PASSWORD
+  db-ro-password:
+    environment: ELEUTHERIA_DB_RO_PASSWORD
