@@ -6,6 +6,7 @@
 
 $wgLogos = [
   'src' => "$wgResourceBasePath/resources/assets/logo.svg",
+  '1x' => "$wgResourceBasePath/resources/assets/logo.svg",
   'wordmark' => [
     'src' => "$wgResourceBasePath/resources/assets/wordmark.svg",
     'width' => 150,
@@ -13,7 +14,7 @@ $wgLogos = [
   ]
 ];
 
-$wgFavicon = '/favicon.svg';
+$wgFavicon = "$wgResourceBasePath/resources/assets/favicons/favicon.ico";
 
 $wgFooterIcons = [
 	'poweredby' => [

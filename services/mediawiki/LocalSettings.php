@@ -49,6 +49,4 @@ $wgAuthenticationTokenVersion = "1";
 
 $wgDiff3 = "/usr/bin/diff3";
 
-$wgDefaultSkin = "timeless";
-
 require_once "$LSS/Extensions.php";

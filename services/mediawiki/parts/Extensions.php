@@ -2,6 +2,9 @@
 
 // Skins
 
+$wgDefaultSkin = "citizen";
+
+wfLoadSkin( 'Citizen' );
 wfLoadSkin( 'MinervaNeue' );
 wfLoadSkin( 'MonoBook' );
 wfLoadSkin( 'Timeless' );
