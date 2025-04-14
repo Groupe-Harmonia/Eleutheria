@@ -1,0 +1,6 @@
+{
+  "require": {
+    "mediawiki/semantic-media-wiki": "~5.0",
+    "starcitizentools/citizen-skin": "v3.0.0"
+  }
+}
