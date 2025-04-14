@@ -18,7 +18,7 @@ services:
       # https://stackoverflow.com/questions/68267224/how-to-script-initializing-the-mediawiki-database-when-localsettings-php-already
       # Les valeurs qui sont données ne sont pas importantes, sauf utilisatrices et connections à la DB.
       - ./services/mediawiki/LocalSettings.php:/var/www/html/LocalSettings.php
-      - ./services/caddy/Caddyfile:/etc/caddy/Caddyfile
+      - ./services/caddy:/etc/caddy
     ports:
       - $ELEUTHERIA_PROXY_PORT:80
 
