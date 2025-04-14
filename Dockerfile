@@ -8,8 +8,8 @@ FROM os-deps AS setup
 COPY --from=composer /usr/bin/composer /usr/bin/composer
 COPY composer.json /var/www/html/composer.local.json
 
-RUN composer config --no-plugins allow-plugins.composer/installers true
-RUN composer update --no-dev
+RUN composer config --no-interaction --no-plugins allow-plugins.composer/installers true
+RUN composer update --no-interaction --no-dev
 
 COPY services/mediawiki/php-config.ini /usr/local/etc/php/conf.d/php-config.ini
 COPY services/mediawiki/parts/ /var/www/html/ls_snippets
