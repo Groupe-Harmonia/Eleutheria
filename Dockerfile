@@ -7,7 +7,7 @@ FROM os-deps AS setup
 # Install Composer
 COPY --from=composer /usr/bin/composer /usr/bin/composer
 COPY composer.json /var/www/html/composer.local.json
-RUN chown -R www-data:www-data /var/www/html
+RUN chown -R www-data:www-data /var/www/html/composer.local.json
 
 RUN composer config --no-interaction --no-plugins allow-plugins.composer/installers true
 RUN composer update --no-interaction --no-dev
