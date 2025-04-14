@@ -31,6 +31,7 @@ RUN composer update --no-interaction --no-dev
 
 COPY services/mediawiki/php-config.ini /usr/local/etc/php/conf.d/php-config.ini
 COPY services/mediawiki/parts/ /var/www/html/ls_snippets
+COPY services/mediawiki/LocalSettings.php /var/www/html/LocalSettings.php
 COPY assets/ /var/www/html/resources/assets
 
 COPY services/supervisord.conf /etc/supervisor/conf.d/supervisord.conf
