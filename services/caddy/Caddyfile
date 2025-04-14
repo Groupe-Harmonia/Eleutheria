@@ -1,0 +1,56 @@
+{
+	# auto_https off
+}
+
+:80 {
+	root /var/www/html
+
+	encode zstd gzip
+	request_body {
+		max_size 30MB
+	}
+
+	header X-Content-Type-Options "nosniff"
+	header X-Frame-Options "DENY"
+	header Strict-Transport-Security "max-age=63072000; includeSubDomains; preload"
+	header X-XSS-Protection "1; mode=block"
+	header Referrer-Policy "strict-origin-when-cross-origin"
+	header Expect-CT "enforce,max-age=30" # This need some testing in production
+	header Referrer-Policy "same-origin"
+
+	# This regex only match files available in assets/favicons
+	@favicon_or_manifest path_regexp "^/(site\.webmanifest|(favicon|apple-touch-icon|android-chrome).*\.(png|ico))$"
+	handle @favicon_or_manifest {
+		root /var/www/html/resources/assets/favicons
+    file_server
+  }
+
+	@ignored-files-types path_regexp "^/"
+	error /.ht* "Not found" 404
+	error /cache* "Not found" 404
+	error /languages* "Not found" 404
+	error /maintenance* "Not found" 404
+	error /serialized* "Not found" 404
+
+  # @error status 5xx
+	php_fastcgi localhost:9000 {
+		root /var/www/html
+		# split .php
+
+    # handle_response @error {
+    #   error @error "Internal server error" {rp.status_code}
+    # }
+	}
+
+	# log {
+	#   output file /var/log/caddy/access.log
+	# }
+
+	file_server
+
+	handle_errors {
+		respond "An error has been raised: {err.message} ({err.status_code})
+
+    If you believe you require assistance, please provide the following ID to administrators: {err.id}" {err.status_code}
+	}
+}
