@@ -1,6 +1,6 @@
-FROM mediawiki:1.43 AS os-deps
+FROM mediawiki:1.43-fpm AS os-deps
 
-RUN apt update && apt upgrade -y;
+RUN apt update && apt upgrade -y; apt install -y net-tools supervisor
 
 FROM os-deps AS setup
 
@@ -11,7 +11,17 @@ COPY composer.json /var/www/html/composer.local.json
 RUN composer config --no-plugins allow-plugins.composer/installers true
 RUN composer update --no-dev
 
+COPY services/mediawiki/php-config.ini /usr/local/etc/php/conf.d/php-config.ini
 COPY services/mediawiki/parts/ /var/www/html/ls_snippets
 COPY assets/ /var/www/html/resources/assets
 
-# RUN composer install --no-dev && composer update
+COPY services/supervisord.conf /etc/supervisor/conf.d/supervisord.conf
+
+FROM setup AS caddy-setup
+
+ENV XDG_DATA_HOME=/data
+COPY --from=caddy:2.9-alpine /usr/bin/caddy /usr/bin/caddy
+
+COPY ./services/caddy/Caddyfile /etc/caddy/Caddyfile
+
+CMD ["/usr/bin/supervisord", "-c", "/etc/supervisor/conf.d/supervisord.conf"]
