@@ -4,18 +4,24 @@ RUN apt update && apt upgrade -y; apt install -y net-tools supervisor
 
 FROM os-setup AS caddy-setup
 
+# Create caddy group + user
+RUN groupadd --system caddy && useradd --system \
+  --gid caddy \
+  --create-home \
+  --home-dir /var/lib/caddy \
+  --shell /usr/sbin/nologin \
+  --comment "Caddy web server" \
+  caddy
+
+RUN mkdir -p /data/caddy /usr/share/caddy /config/caddy && \
+  chown caddy:caddy -R /data/caddy /usr/share/caddy /config/caddy
+
+ENV XDG_CONFIG_HOME=/config
 ENV XDG_DATA_HOME=/data
+
 COPY --from=caddy:2.9-alpine /usr/bin/caddy /usr/bin/caddy
 
 COPY ./services/caddy/Caddyfile /etc/caddy/Caddyfile
-
-RUN groupadd --system caddy && useradd --system \
-      --gid caddy \
-      --create-home \
-      --home-dir /var/lib/caddy \
-      --shell /usr/sbin/nologin \
-      --comment "Caddy web server" \
-      caddy
 
 FROM caddy-setup AS setup
 

@@ -14,6 +14,7 @@ services:
     volumes:
       - app_images:/var/www/html/images
       - app_deleted_images:/var/www/data/deleted_images
+      - proxy_data:/data
       # Commentez cette ligne pour pouvoir initialiser la base de données en ligne. Puis suivez :
       # https://stackoverflow.com/questions/68267224/how-to-script-initializing-the-mediawiki-database-when-localsettings-php-already
       # Les valeurs qui sont données ne sont pas importantes, sauf utilisatrices et connections à la DB.
@@ -60,6 +61,7 @@ services:
 volumes:
   app_images:
   app_deleted_images:
+  proxy_data:
   db:
 
 secrets:
