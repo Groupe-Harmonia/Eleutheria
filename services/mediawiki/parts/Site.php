@@ -8,6 +8,8 @@ $wgUpgradeKey = file_get_contents('/run/secrets/app-upgrade-key');
 
 // General
 
+$wgGroupPermissions['*']['createaccount'] = false;  # Disabled during development :)
+
 $wgSitename = "Eleutheria";
 // $wgServer = "https://" . DOMAIN;
 // $wgServer = "http://127.0.0.1:55555";
