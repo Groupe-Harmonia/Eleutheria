@@ -1,6 +1,5 @@
 {
 	# auto_https off
-  debug
 }
 
 :80 {
