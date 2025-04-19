@@ -1,6 +1,34 @@
 {
   "require": {
+    "mediawiki/code-mirror": "1.43.0",
     "mediawiki/semantic-media-wiki": "~5.0",
+		"mediawiki/semantic-scribunto": "dev-master",
     "starcitizentools/citizen-skin": "v3.0.0"
-  }
+  },
+  "extra": {
+    "merge-plugin": {
+      "include": [
+        "extensions/Cite/composer.json"
+      ]
+    }
+  },
+  "repositories": [
+    {
+      "type": "package",
+      "package": {
+        "name": "mediawiki/code-mirror",
+        "type": "mediawiki-extension",
+        "version": "1.43.0",
+        "dist": {
+          "url": "https://github.com/wikimedia/mediawiki-extensions-CodeMirror/archive/REL1_43.zip",
+          "type": "zip"
+        },
+        "source": {
+          "type": "git",
+          "url": "https://github.com/wikimedia/mediawiki-extensions-CodeMirror.git",
+          "reference": "REL1_43"
+        }
+      }
+    }
+  ]
 }

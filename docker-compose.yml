@@ -3,6 +3,8 @@ services:
     build:
       context: .
     restart: unless-stopped
+    labels:
+      - com.centurylinklabs.watchtower.enable=false
 
     environment:
       - ELEUTHERIA_APP_URL
