@@ -80,5 +80,5 @@ $wgVisualEditorEnableWikitext = true;
 $wgDefaultUserOptions['visualeditor-newwikitext'] = 1;
 
 $wgVisualEditorUseSingleEditTab = true;
-$wgDefaultUserOptions['visualeditor-tabs'] = 'visualeditor';  // or "multi-tab"
+$wgDefaultUserOptions['visualeditor-editor'] = 'visualeditor';
 
