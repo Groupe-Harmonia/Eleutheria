@@ -31,7 +31,8 @@ FROM caddy-setup AS setup
 
 # Install Composer
 
-# USER root
+RUN set -eux; chown -R caddy:caddy /var/www
+USER caddy
 
 COPY --from=composer /usr/bin/composer /usr/bin/composer
 COPY composer.json /var/www/html/composer.local.json
