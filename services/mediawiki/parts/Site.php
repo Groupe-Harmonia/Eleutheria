@@ -11,8 +11,6 @@ $wgUpgradeKey = file_get_contents('/run/secrets/app-upgrade-key');
 $wgGroupPermissions['*']['createaccount'] = false;  # Disabled during development :)
 
 $wgSitename = "Eleutheria";
-// $wgServer = "https://" . DOMAIN;
-// $wgServer = "http://127.0.0.1:55555";
 
 $wgServer = $_ENV['ELEUTHERIA_APP_URL'];
 
@@ -43,7 +41,6 @@ $wgRightsUrl = 'https://creativecommons.org/licenses/by-sa/4.0/';
 $wgRightsText = 'Creative Commons Attribution-ShareAlike';
 $wgRightsIcon = "$wgResourceBasePath/resources/assets/licenses/cc-by-sa.png";
 
-
 // Caching
 
 $wgCacheEpoch = 20250405201103;
@@ -58,33 +55,31 @@ $wgNativeImageLazyLoading = true;
 
 $wgGitRepositoryViewers['https://github.com/(.*?)(.git)?'] = 'https://github.com/$1/commit/%H';
 
-// // Use Extension:ShortDescription for search suggestion description
-// $wgCitizenSearchDescriptionSource = 'wikidata';
-// // Default to dark theme
-// $wgCitizenThemeDefault = 'dark';
-// $wgCitizenThemeColor = '#0d1012';
-// $wgCitizenManifestOptions = [
-// 	'background_color' => '#0d1012',
-// 	'description' => 'Unofficial wiki dedicated to Star Citizen and Squadron 42',
-// 	'short_name' => 'SC Wiki',
-// 	'theme_color' => "#0d1012",
-// 	'icons' => [
-// 		[
-// 			'src' => "$wgResourceBasePath/resources/assets/sitelogo.svg",
-// 			'sizes' => 'any',
-// 			'type' => 'image/svg+xml'
-// 		],
-// 		[
-// 			'src' => "$wgResourceBasePath/resources/assets/maskable_icon_x192.png",
-// 			'sizes' => '192x192',
-// 			'type' => 'image/png',
-// 			'purpose' => 'maskable'
-// 		],
-// 		[
-// 			'src' => "$wgResourceBasePath/resources/assets/maskable_icon_x512.png",
-// 			'sizes' => '512x512',
-// 			'type' => 'image/png',
-// 			'purpose' => 'maskable'
-// 		],
-// 	],
-// ];
+$wgCitizenSearchDescriptionSource = 'wikidata';
+$wgCitizenThemeDefault = 'auto';
+$wgCitizenThemeColor = '#94d39e';
+$wgCitizenManifestOptions = [
+	'background_color' => '#94d39e',
+	'description' => 'Le wiki de la communauté queer en France ! 🏳️‍🌈',
+	'short_name' => 'Eleutheria',
+	'theme_color' => "#94d39e",
+	'icons' => [
+		[
+			'src' => "$wgResourceBasePath/resources/assets/logo.svg",
+			'sizes' => 'any',
+			'type' => 'image/svg+xml'
+		],
+		[
+			'src' => "$wgResourceBasePath/resources/assets/favicons/android-chrome-192x192.png",
+			'sizes' => '192x192',
+			'type' => 'image/png',
+			'purpose' => 'maskable'
+		],
+		[
+			'src' => "$wgResourceBasePath/resources/assets/favicons/android-chrome-512x512.png",
+			'sizes' => '512x512',
+			'type' => 'image/png',
+			'purpose' => 'maskable'
+		],
+	],
+];
