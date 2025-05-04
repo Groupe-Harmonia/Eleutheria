@@ -2,7 +2,9 @@
   "require": {
     "mediawiki/code-mirror": "1.43.0",
     "mediawiki/semantic-media-wiki": "~5.0",
-		"mediawiki/semantic-scribunto": "dev-master",
+    "mediawiki/semantic-scribunto": "dev-master",
+    "mediawiki/template-styles": "1.43.0",
+    "octfx/template-styles-extender": "dev-develop",
     "starcitizentools/citizen-skin": "v3.0.0"
   },
   "extra": {
@@ -26,6 +28,23 @@
         "source": {
           "type": "git",
           "url": "https://github.com/wikimedia/mediawiki-extensions-CodeMirror.git",
+          "reference": "REL1_43"
+        }
+      }
+    },
+    {
+      "type": "package",
+      "package": {
+        "name": "mediawiki/template-styles",
+        "type": "mediawiki-extension",
+        "version": "1.43.0",
+        "dist": {
+          "url": "https://github.com/wikimedia/mediawiki-extensions-TemplateStyles/archive/REL1_43.zip",
+          "type": "zip"
+        },
+        "source": {
+          "type": "git",
+          "url": "https://github.com/wikimedia/mediawiki-extensions-TemplateStyles.git",
           "reference": "REL1_43"
         }
       }

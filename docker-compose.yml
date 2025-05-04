@@ -8,6 +8,19 @@ services:
 
     environment:
       - ELEUTHERIA_APP_URL
+      - ELEUTHERIA_APP_EXCEPTION_DETAILS
+      - ELEUTHERIA_APP_TURNSTILE_SITE_KEY
+      # I wish I could have used a secret instead, but it would have been mandatory for
+      # development...
+      - ELEUTHERIA_APP_TURNSTILE_SECRET_KEY
+
+      # SMTP
+      - ELEUTHERIA_APP_SMTP_HOST
+      - ELEUTHERIA_APP_SMTP_PORT
+      - ELEUTHERIA_APP_SMTP_DOMAIN
+      - ELEUTHERIA_APP_SMTP_USERNAME
+      - ELEUTHERIA_APP_SMTP_PASSWORD
+
     secrets:
       - app-secret-key
       - app-upgrade-key

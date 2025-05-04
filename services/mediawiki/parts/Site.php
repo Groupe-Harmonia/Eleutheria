@@ -1,5 +1,4 @@
 <?php
-const DOMAIN = 'wiki.t4t.one';
 
 // Secrets
 
@@ -7,8 +6,6 @@ $wgSecretKey = file_get_contents('/run/secrets/app-secret-key');
 $wgUpgradeKey = file_get_contents('/run/secrets/app-upgrade-key');
 
 // General
-
-$wgGroupPermissions['*']['createaccount'] = false;  # Disabled during development :)
 
 $wgSitename = "Eleutheria";
 
