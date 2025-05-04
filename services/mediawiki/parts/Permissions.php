@@ -6,7 +6,7 @@
  */
 
 // Anonymous
-$wgGroupPermissions['*']['edit'] = true;  # TODO: Revert after the afterwork :)
+$wgGroupPermissions['*']['edit'] = false;  # TODO: Revert after the afterwork :)
 $wgGroupPermissions['*']['createpage'] = false;
 $wgGroupPermissions['*']['createtalk'] = false;
 $wgGroupPermissions['*']['createaccount'] = false;
