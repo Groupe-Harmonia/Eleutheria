@@ -21,7 +21,8 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 // LSS is standing for Local Settings Snippets
 $LSS = $IP . '/ls_snippets';
 
-$wgShowExceptionDetails = true;
+# If not set to true, set to false
+$wgShowExceptionDetails = getenv("ELEUTHERIA_APP_EXCEPTION_DETAILS") === 'true' ? true : false;
 
 require_once "$LSS/Site.php";
 require_once "$LSS/Logos.php";
@@ -50,3 +51,4 @@ $wgAuthenticationTokenVersion = "1";
 $wgDiff3 = "/usr/bin/diff3";
 
 require_once "$LSS/Extensions.php";
+require_once "$LSS/Permissions.php";
