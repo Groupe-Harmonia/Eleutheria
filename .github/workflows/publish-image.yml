@@ -2,7 +2,7 @@ name: Publish Eleutheria Docker image
 
 on:
   push:
-    branches: ['main', 'next']
+    branches: ['latest', 'next']
 
 env:
   IMAGE_NAME: ${{ github.repository }}
