@@ -1,5 +1,4 @@
-#
-name: Create and publish a Docker image
+name: Publish Eleutheria Docker image
 
 on:
   push:
@@ -11,7 +10,6 @@ env:
 jobs:
   build-and-push-image:
     runs-on: ubuntu-latest
-    # Sets the permissions granted to the `GITHUB_TOKEN` for the actions in this job.
     permissions:
       contents: read
       packages: write
