@@ -1,4 +1,4 @@
-name: Sync main to latest
+name: Reflect to latest
 
 on:
   push:
