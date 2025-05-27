@@ -1,0 +1,24 @@
+name: Sync main to latest
+
+on:
+  push:
+    branches: ['main']
+
+jobs:
+  sync-latest:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout main branch
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Configure Git
+        run: |
+          git config --global user.name "${{ github.actor }}"
+          git config --global user.email "${{ github.actor }}@users.noreply.github.com"
+
+      - name: Create or update 'latest' branch
+        run: |
+          git checkout -B latest
+          git push origin latest --force
