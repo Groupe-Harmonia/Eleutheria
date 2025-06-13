@@ -8,8 +8,8 @@ set -eufx
 RED='\033[0;31m'
 RESET='\033[0m'
 
-if [ -r "/run/secrets/db_ro_password" ]; then
-  ELEUTHERIA_DB_RO_PASSWORD=$(cat /run/secrets/db_ro_password)
+if [ -r "/run/secrets/db-ro-password" ]; then
+  ELEUTHERIA_DB_RO_PASSWORD=$(cat /run/secrets/db-ro-password)
 fi
 
 if [ -z "${ELEUTHERIA_DB_RO_PASSWORD:-}" ]; then
