@@ -5,7 +5,7 @@
     "mediawiki/semantic-scribunto": "dev-master",
     "mediawiki/template-styles": "1.43.0",
     "octfx/template-styles-extender": "dev-develop",
-    "starcitizentools/citizen-skin": "v3.0.0"
+    "starcitizentools/citizen-skin": "v3.3.1"
   },
   "extra": {
     "merge-plugin": {
