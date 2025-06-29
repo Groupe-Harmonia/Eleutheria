@@ -7,12 +7,14 @@ services:
       - com.centurylinklabs.watchtower.enable=false
 
     environment:
+      # - ELEUTHERIA_PREPARE_DB=true
       - ELEUTHERIA_APP_URL
       - ELEUTHERIA_APP_EXCEPTION_DETAILS
       - ELEUTHERIA_APP_TURNSTILE_SITE_KEY
       # I wish I could have used a secret instead, but it would have been mandatory for
       # development...
       - ELEUTHERIA_APP_TURNSTILE_SECRET_KEY
+      - ELEUTHERIA_LOG_LEVEL=${ELEUTHERIA_LOG_LEVEL:-300}
 
       # SMTP
       - ELEUTHERIA_APP_SMTP_HOST
@@ -46,9 +48,11 @@ services:
     depends_on:
       db:
         condition: service_healthy
+      fluent-bit:
+        condition: service_started
 
   db:
-    image: mariadb
+    image: mariadb:11.8
     restart: unless-stopped
 
     environment:
@@ -73,10 +77,57 @@ services:
       timeout: 5s
       retries: 5
 
+  loki:
+    image: grafana/loki:3.4
+    command: -config.file=/etc/loki/local-config.yaml
+    environment:
+      LOKI_USERNAME: $ELEUTHERIA_LOKI_USERNAME
+      LOKI_PASSWORD: $ELEUTHERIA_LOKI_PASSWORD
+
+    volumes:
+      - loki_data:/loki
+
+    healthcheck:
+      test: wget --quiet --tries=1 --output-document=- http://localhost:3100/ready | grep -q -w ready || exit 1
+      start_interval: 2s
+      start_period: 10s
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  fluent-bit:
+    image: fluent/fluent-bit:4.0
+    command: ["-c", "/fluent-bit/etc/fluent-bit.yaml"]
+    volumes:
+      - ./services/fluent-bit/fluent-bit.yaml:/fluent-bit/etc/fluent-bit.yaml
+    environment:
+      LOKI_URL: loki
+      LOKI_USERNAME: $ELEUTHERIA_LOKI_USERNAME
+      LOKI_PASSWORD: $ELEUTHERIA_LOKI_PASSWORD
+      FLUENTD_CONF: fluent.conf
+    depends_on:
+      loki:
+        condition: service_healthy
+
+
+  grafana:
+    environment:
+      - GF_PATHS_PROVISIONING=/etc/grafana/provisioning
+      - GF_AUTH_ANONYMOUS_ENABLED=true
+      - GF_AUTH_ANONYMOUS_ORG_ROLE=Admin
+      - GF_FEATURE_TOGGLES_ENABLE=alertingSimplifiedRouting,alertingQueryAndExpressionsStepMode
+    image: grafana/grafana:latest
+    volumes:
+      - grafana_data:/var/lib/grafana
+    ports:
+      - "3000:3000"
+
 volumes:
   app_images:
   app_deleted_images:
   proxy_data:
+  loki_data:
+  grafana_data:
   db:
 
 secrets:

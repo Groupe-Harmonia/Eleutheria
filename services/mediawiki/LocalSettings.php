@@ -14,24 +14,21 @@
  */
 
 # Protect against web entry
-if ( !defined( 'MEDIAWIKI' ) ) {
-	exit;
+if (!defined('MEDIAWIKI')) {
+  exit;
 }
 
 // LSS is standing for Local Settings Snippets
-$LSS = $IP . '/ls_snippets';
+$LSS = "$IP/ls_snippets";
 
 # If not set to true, set to false
 $wgShowExceptionDetails = getenv("ELEUTHERIA_APP_EXCEPTION_DETAILS") === 'true' ? true : false;
 
-require_once "$LSS/Site.php";
-require_once "$LSS/Logos.php";
-require_once "$LSS/Email.php";
 require_once "$LSS/Database.php";
-// require_once $LSS . '/Site.php';
-// require_once $LSS . '/Logos.php';
-// require_once $LSS . '/Email.php';
-// require_once $LSS . '/Database.php';
+require_once "$LSS/Email.php";
+require_once "$LSS/Logs.php";
+require_once "$LSS/Logos.php";
+require_once "$LSS/Site.php";
 
 ## Shared memory settings
 $wgMainCacheType = CACHE_ACCEL;

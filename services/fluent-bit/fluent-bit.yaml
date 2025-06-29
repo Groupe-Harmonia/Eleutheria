@@ -1,0 +1,23 @@
+service:
+  parsers_file: /fluent-bit/etc/parsers.conf
+
+pipeline:
+  inputs:
+    - name: tcp
+      listen: 0.0.0.0
+      port: 24224
+      format: json
+      # processors:
+      #   metrics:
+      #     - name: labels
+      #       upsert: service eleutheria
+
+  outputs:
+    - name: stdout
+      match: '*'
+    - name: loki
+      match: '*'
+      host: ${LOKI_URL}
+      http_user: ${LOKI_USERNAME}
+      http_passwd: ${LOKI_PASSWORD}
+      port: 3100

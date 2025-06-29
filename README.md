@@ -14,3 +14,15 @@ Start up the application, you should see that LocalSettings.php has been deleted
 Once the database migrations have been ran, stop the application, and remove `ELEUTHERIA_PREPARE_DB`, and launch it again.
 
 This procedure make it more easier to set up your Wiki.
+
+## Logging
+
+We use a mix of different systems for logging, composed of the following components
+
+```mermaid
+flowchart LR
+    A[Any app we wish to log]
+    A --> |Log forwarding| B{fluent-bit}
+    B --> |Log aggregation| C[(Loki)]
+    C <--> |Log visualisation| D{Grafana}
+```

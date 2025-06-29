@@ -4,7 +4,7 @@
 
 $wgDefaultSkin = "citizen";
 
-wfLoadSkin( 'Citizen' );
+wfLoadSkin('Citizen');
 // wfLoadSkin( 'MinervaNeue' );
 // wfLoadSkin( 'MonoBook' );
 // wfLoadSkin( 'Timeless' );
@@ -48,8 +48,8 @@ NOTE: CodeMirrorV6 is completely broken in 2017 Wikitext Editor without line num
 that's handy to know :)
 
 $wgCodeMirrorLineNumberingNamespaces = [
-	NS_TEMPLATE,
-	NS_MODULE
+  NS_TEMPLATE,
+  NS_MODULE
 ];
 */
 
@@ -64,15 +64,15 @@ $wgCaptchaTriggers['createaccount'] = true;
 $wgCaptchaTriggers['badlogin'] = true;
 $wgCaptchaTriggers['badloginperuser'] = true;
 
-if ( getenv("ELEUTHERIA_APP_TURNSTILE_SITE_KEY") && getenv("ELEUTHERIA_APP_TURNSTILE_SECRET_KEY") ) {
+if (getenv("ELEUTHERIA_APP_TURNSTILE_SITE_KEY") && getenv("ELEUTHERIA_APP_TURNSTILE_SECRET_KEY")) {
   // Turnstile
   wfLoadExtensions([
     'ConfirmEdit',
     'ConfirmEdit/Turnstile',
   ]);
 
-  $wgTurnstileSiteKey= $_ENV["ELEUTHERIA_APP_TURNSTILE_SITE_KEY"];
-  $wgTurnstileSecretKey= $_ENV["ELEUTHERIA_APP_TURNSTILE_SECRET_KEY"];
+  $wgTurnstileSiteKey = $_ENV["ELEUTHERIA_APP_TURNSTILE_SITE_KEY"];
+  $wgTurnstileSecretKey = $_ENV["ELEUTHERIA_APP_TURNSTILE_SECRET_KEY"];
 } else {
   // QuestyCaptcha
   wfLoadExtensions([
@@ -81,12 +81,14 @@ if ( getenv("ELEUTHERIA_APP_TURNSTILE_SITE_KEY") && getenv("ELEUTHERIA_APP_TURNS
   ]);
 
   $wgCaptchaQuestions = [
-    'Quel est le nom de ce site ?' => [ 'eleutheria' ],
-    'Quel est la capitale de la France ?' => [ 'paris' ],
-    "Quand s'est déroulé la Pride 2024 à Strasbourg ?" => [ '15 juin', '15/06', '15 06', '06/15', '06 15', 'juin', 'juin 15' ],
-    "Quel est le nom du jouet, souvent associé à la communauté LGBTQIA+, à forme de requin ?" => [ 'blåhaj', 'blahaj' ],
+    'Quel est le nom de ce site ?' => ['eleutheria'],
+    'Quel est la capitale de la France ?' => ['paris'],
+    "Comment appeles-t-on un lieu public où l'on se sent en sécurité ?" => ['safe space', 'safe-space', 'safe place', 'safe-place', 'safe'],
+    "Quand s'est déroulé la Pride 2024 à Strasbourg ?" => ['15 juin', '15/06', '15 06', '06/15', '06 15', 'juin', 'juin 15'],
+    "Quel est le nom du jouet, souvent associé à la communauté LGBTQIA+, à forme de requin bleuté ?" => ['blåhaj', 'blahaj'],
   ];
-};
+}
+;
 
 
 /**
@@ -130,16 +132,16 @@ $wgSyntaxHighlightMaxLines = 250;
  * Extension: Parsoid
  * Require explicit loading for Linter
  */
-wfLoadExtension( 'Parsoid', "$IP/vendor/wikimedia/parsoid/extension.json" );
+wfLoadExtension('Parsoid', "$IP/vendor/wikimedia/parsoid/extension.json");
 $wgParsoidSettings = [
-	'useSelser' => true,
-	'linting'   => true
+  'useSelser' => true,
+  'linting' => true
 ];
 
 /**
  * Extension: Math
  */
-$wgMathValidModes = [ 'mathml' ];
+$wgMathValidModes = ['mathml'];
 $wgDefaultUserOptions['math'] = 'mathml';
 $wgMathUseInternalRestbasePath = false;
 $wgMathFullRestbaseURL = 'https://wikimedia.org/api/rest_';
@@ -149,27 +151,27 @@ $wgMathMathMLUrl = 'https://mathoid-beta.wmflabs.org';
  * Extension: TemplateStyles
  */
 $wgTemplateStylesAllowedUrls = [
-	'audio' => [
+  'audio' => [
     "<^https://upload\\.wikimedia\\.org/wikipedia/commons/>",
-	],
-	'image' => [
+  ],
+  'image' => [
     "<^https://upload\\.wikimedia\\.org/wikipedia/commons/>",
-	],
-	'svg' => [
+  ],
+  'svg' => [
     "<^https://upload\\.wikimedia\\.org/wikipedia/commons/[^?#]*\\.svg(?:[?#]|$)>",
-		'<^https://wiki\\.t4t\\.one/[^?#]*\\.svg(?:[?#]|$)>',
-	],
-	'font' => [
-		'<^https://wiki\\.t4t\\.one/>',
-	],
-	'namespace' => [
-		'<.>',
-	],
-	'css' => [],
+    '<^https://wiki\\.t4t\\.one/[^?#]*\\.svg(?:[?#]|$)>',
+  ],
+  'font' => [
+    '<^https://wiki\\.t4t\\.one/>',
+  ],
+  'namespace' => [
+    '<.>',
+  ],
+  'css' => [],
 ];
 $wgTemplateStylesNamespaces = [
-	NS_TEMPLATE => true,
-	// NS_MODULE => true,  // ?
+  NS_TEMPLATE => true,
+  // NS_MODULE => true,  // ?
 ];
 
 
