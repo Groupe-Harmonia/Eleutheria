@@ -109,7 +109,6 @@ services:
       loki:
         condition: service_healthy
 
-
   grafana:
     environment:
       - GF_PATHS_PROVISIONING=/etc/grafana/provisioning
@@ -120,7 +119,7 @@ services:
     volumes:
       - grafana_data:/var/lib/grafana
     ports:
-      - "3000:3000"
+      - "127.0.0.1:3000:3000"
 
 volumes:
   app_images:

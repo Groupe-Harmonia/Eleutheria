@@ -1,8 +1,5 @@
 <?php
 
-// use Monolog\Handler\SocketHandler;
-// use Monolog\Formatter\JsonFormatter;
-
 $wgDebugLogGroups = [];
 
 if (getenv("ELEUTHERIA_LOG_LEVEL") && is_numeric(getenv("ELEUTHERIA_LOG_LEVEL"))) {
