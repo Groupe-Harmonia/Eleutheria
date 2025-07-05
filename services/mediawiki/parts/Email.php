@@ -1,6 +1,6 @@
 <?php
 
-if ( getenv('ELEUTHERIA_APP_SMTP_HOST') ) {
+if (getenv('ELEUTHERIA_APP_SMTP_HOST')) {
   $wgEnableEmail = true;
 
   $wgSMTP = [
@@ -13,12 +13,15 @@ if ( getenv('ELEUTHERIA_APP_SMTP_HOST') ) {
   ];
 } else {
   $wgEnableEmail = false;
-};
+}
+;
 
 $wgEnableUserEmail = true; # UPO
 
-$wgEmergencyContact  = $_ENV['ELEUTHERIA_APP_SMTP_USERNAME'];
-$wgPasswordSender = $_ENV['ELEUTHERIA_APP_SMTP_USERNAME'];
+if (getenv('ELEUTHERIA_APP_SMTP_USERNAME')) {
+  $wgEmergencyContact = $_ENV['ELEUTHERIA_APP_SMTP_USERNAME'];
+  $wgPasswordSender = $_ENV['ELEUTHERIA_APP_SMTP_USERNAME'];
+}
 
 $wgEnotifUserTalk = false; # UPO
 $wgEnotifWatchlist = false; # UPO

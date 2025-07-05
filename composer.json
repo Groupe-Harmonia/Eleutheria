@@ -5,12 +5,13 @@
     "mediawiki/semantic-scribunto": "dev-master",
     "mediawiki/template-styles": "1.43.0",
     "octfx/template-styles-extender": "dev-develop",
-    "starcitizentools/citizen-skin": "v3.0.0"
+    "starcitizentools/citizen-skin": "v3.4.0"
   },
   "extra": {
     "merge-plugin": {
       "include": [
-        "extensions/Cite/composer.json"
+        "extensions/Cite/composer.json",
+        "extensions/OATHAuth/composer.json"
       ]
     }
   },

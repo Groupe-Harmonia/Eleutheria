@@ -1,0 +1,22 @@
+service:
+  parsers_file: /fluent-bit/etc/parsers.conf
+
+pipeline:
+  inputs:
+    - name: tcp
+      tag: app.eleutheria
+      listen: 0.0.0.0
+      port: 24224
+      format: json
+
+  outputs:
+    # - name: stdout
+    #   match: '*'
+    - name: loki
+      match: 'app.eleutheria'
+      host: ${LOKI_URL}
+      http_user: ${LOKI_USERNAME}
+      http_passwd: ${LOKI_PASSWORD}
+      port: 3100
+      labels: job=eleutheria, host=$sub['extra']['host']
+      compress: gzip

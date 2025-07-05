@@ -42,7 +42,7 @@ $wgRightsIcon = "$wgResourceBasePath/resources/assets/licenses/cc-by-sa.png";
 
 $wgCacheEpoch = 20250405201103;
 
-$wgFragmentMode = [ 'html5' ];
+$wgFragmentMode = ['html5'];
 $wgParserEnableLegacyHeadingDOM = false;
 $wgEnableProtectionIndicators = true;
 $wgSortedCategories = true;
@@ -56,27 +56,27 @@ $wgCitizenSearchDescriptionSource = 'wikidata';
 $wgCitizenThemeDefault = 'auto';
 $wgCitizenThemeColor = '#94d39e';
 $wgCitizenManifestOptions = [
-	'background_color' => '#94d39e',
-	'description' => 'Le wiki de la communauté queer en France ! 🏳️‍🌈',
-	'short_name' => 'Eleutheria',
-	'theme_color' => "#94d39e",
-	'icons' => [
-		[
-			'src' => "$wgResourceBasePath/resources/assets/logo.svg",
-			'sizes' => 'any',
-			'type' => 'image/svg+xml'
-		],
-		[
-			'src' => "$wgResourceBasePath/resources/assets/favicons/android-chrome-192x192.png",
-			'sizes' => '192x192',
-			'type' => 'image/png',
-			'purpose' => 'maskable'
-		],
-		[
-			'src' => "$wgResourceBasePath/resources/assets/favicons/android-chrome-512x512.png",
-			'sizes' => '512x512',
-			'type' => 'image/png',
-			'purpose' => 'maskable'
-		],
-	],
+  'background_color' => '#94d39e',
+  'description' => 'Le wiki de la communauté queer en France ! 🏳️‍🌈',
+  'short_name' => 'Eleutheria',
+  'theme_color' => "#94d39e",
+  'icons' => [
+    [
+      'src' => "$wgResourceBasePath/resources/assets/logo.svg",
+      'sizes' => 'any',
+      'type' => 'image/svg+xml'
+    ],
+    [
+      'src' => "$wgResourceBasePath/resources/assets/favicons/android-chrome-192x192.png",
+      'sizes' => '192x192',
+      'type' => 'image/png',
+      'purpose' => 'maskable'
+    ],
+    [
+      'src' => "$wgResourceBasePath/resources/assets/favicons/android-chrome-512x512.png",
+      'sizes' => '512x512',
+      'type' => 'image/png',
+      'purpose' => 'maskable'
+    ],
+  ],
 ];

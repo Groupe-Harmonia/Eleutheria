@@ -51,5 +51,9 @@ COPY docker-entrypoint.sh /docker-entrypoint.sh
 
 # root is required for supervisord
 USER root
-# CMD ["/usr/bin/supervisord", "-c", "/etc/supervisor/conf.d/supervisord.conf"]
+RUN set -eux; mkdir -p /var/log/mediawiki && \
+  touch /var/log/mediawiki/log && \
+  chmod 770 /var/log/mediawiki/log && \
+  chown www-data:www-data /var/log/mediawiki/log
+
 CMD ["/bin/bash", "/docker-entrypoint.sh"]
