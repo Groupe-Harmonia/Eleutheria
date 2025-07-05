@@ -1,7 +1,6 @@
 services:
   app:
-    build:
-      context: .
+    image: ghcr.io/groupe-harmonia/eleutheria:latest
     restart: unless-stopped
     labels:
       - com.centurylinklabs.watchtower.enable=false
