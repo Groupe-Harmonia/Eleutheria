@@ -1,5 +1,7 @@
 services:
   app:
+    # build:
+    #   context: .
     image: ghcr.io/groupe-harmonia/eleutheria:latest
     restart: unless-stopped
     labels:
