@@ -98,7 +98,7 @@ services:
     image: fluent/fluent-bit:4.0
     command: ["-c", "/fluent-bit/etc/fluent-bit.yaml"]
     volumes:
-      - ./services/fluent-bit/fluent-bit.yaml:/fluent-bit/etc/fluent-bit.yaml
+      - ".services/fluent-bit/fluent-bit.yaml:/fluent-bit/etc/fluent-bit.yaml"
     environment:
       LOKI_URL: loki
       LOKI_USERNAME: $ELEUTHERIA_LOKI_USERNAME
@@ -111,8 +111,6 @@ services:
   grafana:
     environment:
       - GF_PATHS_PROVISIONING=/etc/grafana/provisioning
-      - GF_AUTH_ANONYMOUS_ENABLED=true
-      - GF_AUTH_ANONYMOUS_ORG_ROLE=Admin
       - GF_FEATURE_TOGGLES_ENABLE=alertingSimplifiedRouting,alertingQueryAndExpressionsStepMode
     image: grafana/grafana:latest
     volumes:
