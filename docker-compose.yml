@@ -113,6 +113,8 @@ services:
       GF_PATHS_PROVISIONING: /etc/grafana/provisioning
       GF_FEATURE_TOGGLES_ENABLE: alertingSimplifiedRouting,alertingQueryAndExpressionsStepMode
       GF_SERVER_ROOT_URL: "${ELEUTHERIA_GRAFANA_URL:-http://localhost:3000}"
+      GF_AUTH_OAUTH_ALLOW_INSECURE_EMAIL_LOOKUP: true
+
     image: grafana/grafana:latest
     volumes:
       - grafana_data:/var/lib/grafana
