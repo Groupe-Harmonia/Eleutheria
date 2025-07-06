@@ -10,8 +10,6 @@ pipeline:
       format: json
 
   outputs:
-    # - name: stdout
-    #   match: '*'
     - name: loki
       match: 'app.eleutheria'
       host: ${LOKI_URL}
