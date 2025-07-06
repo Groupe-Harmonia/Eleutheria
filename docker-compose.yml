@@ -112,7 +112,7 @@ services:
     environment:
       GF_PATHS_PROVISIONING: /etc/grafana/provisioning
       GF_FEATURE_TOGGLES_ENABLE: alertingSimplifiedRouting,alertingQueryAndExpressionsStepMode
-      GF_SERVER_ROOT_URL: "${GRAFANA_APP_URL:-http://localhost:3000}"
+      GF_SERVER_ROOT_URL: "${ELEUTHERIA_GRAFANA__URL:-http://localhost:3000}"
     image: grafana/grafana:latest
     volumes:
       - grafana_data:/var/lib/grafana
