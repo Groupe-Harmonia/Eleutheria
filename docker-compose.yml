@@ -1,5 +1,7 @@
 services:
   app:
+    # build:
+    #   context: .
     image: ghcr.io/groupe-harmonia/eleutheria:latest
     restart: unless-stopped
     labels:
@@ -95,15 +97,13 @@ services:
       retries: 5
 
   fluent-bit:
-    image: fluent/fluent-bit:4.0
+    build:
+      context: ./services/fluent-bit
     command: ["-c", "/fluent-bit/etc/fluent-bit.yaml"]
-    volumes:
-      - ".services/fluent-bit/fluent-bit.yaml:/fluent-bit/etc/fluent-bit.yaml"
     environment:
       LOKI_URL: loki
       LOKI_USERNAME: $ELEUTHERIA_LOKI_USERNAME
       LOKI_PASSWORD: $ELEUTHERIA_LOKI_PASSWORD
-      FLUENTD_CONF: fluent.conf
     depends_on:
       loki:
         condition: service_healthy
@@ -113,17 +113,7 @@ services:
       GF_PATHS_PROVISIONING: /etc/grafana/provisioning
       GF_FEATURE_TOGGLES_ENABLE: alertingSimplifiedRouting,alertingQueryAndExpressionsStepMode
       GF_SERVER_ROOT_URL: "${ELEUTHERIA_GRAFANA_URL:-http://localhost:3000}"
-      GF_AUTH_GENERIC_OAUTH_ENABLED: "true"
-      GF_AUTH_GENERIC_OAUTH_NAME: "authentik"
-      GF_AUTH_GENERIC_OAUTH_CLIENT_ID: "${ELEUTHERIA_GRAFANA_OAUTH_CLIENT_ID?Client ID required from Authentik}"
-      GF_AUTH_GENERIC_OAUTH_CLIENT_SECRET: "${ELEUTHERIA_GRAFANA_OAUTH_CLIENT_SECRET?Client secret required from Authentik}"
-      GF_AUTH_GENERIC_OAUTH_SCOPES: "openid profile email"
-      GF_AUTH_GENERIC_OAUTH_AUTH_URL: "https://auth.hunter.sutaai.dev/application/o/authorize/"
-      GF_AUTH_GENERIC_OAUTH_TOKEN_URL: "https://auth.hunter.sutaai.dev/application/o/token/"
-      GF_AUTH_GENERIC_OAUTH_API_URL: "https://auth.hunter.sutaai.dev/application/o/userinfo/"
-      GF_AUTH_SIGNOUT_REDIRECT_URL: "https://auth.hunter.sutaai.dev/application/o/grafana/end-session/"
-      GF_AUTH_OAUTH_AUTO_LOGIN: "true"
-      GF_AUTH_GENERIC_OAUTH_ROLE_ATTRIBUTE_PATH: "contains(groups, 'Grafana Admin') && 'Admin' || contains(groups, 'Grafana Viewer') && 'Viewer'"
+      GF_AUTH_OAUTH_ALLOW_INSECURE_EMAIL_LOOKUP: true
 
     image: grafana/grafana:latest
     volumes:
