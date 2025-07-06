@@ -95,10 +95,9 @@ services:
       retries: 5
 
   fluent-bit:
-    image: fluent/fluent-bit:4.0
-    command: ["-c", "/fluent-bit/etc/uconf/fluent-bit.yaml"]
-    volumes:
-      - "./services/fluent-bit:/fluent-bit/etc/uconf"
+    build:
+      context: ./services/fluent-bit
+    command: ["-c", "/fluent-bit/etc/fluent-bit.yaml"]
     environment:
       LOKI_URL: loki
       LOKI_USERNAME: $ELEUTHERIA_LOKI_USERNAME
