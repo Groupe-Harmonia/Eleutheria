@@ -6,10 +6,10 @@
  */
 
 // Anonymous
-$wgGroupPermissions['*']['edit'] = false;  # TODO: Revert after the afterwork :)
+$wgGroupPermissions['*']['edit'] = false;
 $wgGroupPermissions['*']['createpage'] = false;
 $wgGroupPermissions['*']['createtalk'] = false;
-$wgGroupPermissions['*']['createaccount'] = false;
+$wgGroupPermissions['*']['createaccount'] = true;
 
 // User (Any created account)
 $wgGroupPermissions['user']['oathauth-enable'] = true;
