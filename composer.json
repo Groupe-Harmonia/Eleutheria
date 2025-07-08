@@ -39,6 +39,23 @@
     {
       "type": "package",
       "package": {
+        "name": "mediawiki/checkuser",
+        "type": "mediawiki-extension",
+        "version": "1.43.0",
+        "dist": {
+          "url": "https://github.com/wikimedia/mediawiki-extensions-CheckUser/archive/REL1_43.zip",
+          "type": "zip"
+        },
+        "source": {
+          "type": "git",
+          "url": "https://github.com/wikimedia/mediawiki-extensions-CheckUser.git",
+          "reference": "REL1_43"
+        }
+      }
+    },
+    {
+      "type": "package",
+      "package": {
         "name": "mediawiki/template-styles",
         "type": "mediawiki-extension",
         "version": "1.43.0",
