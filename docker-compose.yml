@@ -81,6 +81,7 @@ services:
   loki:
     image: grafana/loki:3.4
     command: -config.file=/etc/loki/local-config.yaml
+    restart: unless-stopped
     environment:
       LOKI_USERNAME: $ELEUTHERIA_LOKI_USERNAME
       LOKI_PASSWORD: $ELEUTHERIA_LOKI_PASSWORD
@@ -100,6 +101,7 @@ services:
     build:
       context: ./services/fluent-bit
     command: ["-c", "/fluent-bit/etc/fluent-bit.yaml"]
+    restart: unless-stopped
     environment:
       LOKI_URL: loki
       LOKI_USERNAME: $ELEUTHERIA_LOKI_USERNAME
@@ -109,6 +111,7 @@ services:
         condition: service_healthy
 
   grafana:
+    restart: unless-stopped
     environment:
       GF_PATHS_PROVISIONING: /etc/grafana/provisioning
       GF_FEATURE_TOGGLES_ENABLE: alertingSimplifiedRouting,alertingQueryAndExpressionsStepMode
