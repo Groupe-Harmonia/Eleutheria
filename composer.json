@@ -8,6 +8,14 @@
     "octfx/template-styles-extender": "dev-develop",
     "starcitizentools/citizen-skin": "v3.4.0"
   },
+  "config": {
+    "preferred-install": {
+      "*": "source"
+    },
+    "allow-plugins": {
+      "composer/installers": true
+    }
+  },
   "extra": {
     "merge-plugin": {
       "include": [

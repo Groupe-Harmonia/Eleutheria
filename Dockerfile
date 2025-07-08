@@ -38,7 +38,8 @@ COPY --from=composer /usr/bin/composer /usr/bin/composer
 COPY composer.json /var/www/html/composer.local.json
 
 RUN composer config --no-interaction --no-plugins allow-plugins.composer/installers true
-RUN composer update --no-interaction --no-dev
+RUN composer install --no-interaction --no-dev --prefer-source --no-scripts
+RUN composer update --no-interaction --no-dev --prefer-source --no-scripts
 
 COPY services/caddy/Caddyfile /etc/caddy/Caddyfile
 COPY services/mediawiki/php-config.ini /usr/local/etc/php/conf.d/php-config.ini
