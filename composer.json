@@ -1,6 +1,7 @@
 {
   "require": {
     "mediawiki/code-mirror": "1.43.0",
+    "mediawiki/checkuser": "1.43.0",
     "mediawiki/semantic-media-wiki": "~5.0",
     "mediawiki/semantic-scribunto": "dev-master",
     "mediawiki/template-styles": "1.43.0",
@@ -10,8 +11,10 @@
   "extra": {
     "merge-plugin": {
       "include": [
+        "extensions/Checkuser/composer.json",
         "extensions/Cite/composer.json",
-        "extensions/OATHAuth/composer.json"
+        "extensions/OATHAuth/composer.json",
+        "extensions/TemplateStyles/composer.json"
       ]
     }
   },
