@@ -22,6 +22,7 @@ wfLoadExtensions([
   'Linter',
   'LoginNotify',
   'OATHAuth',
+  'ParserFunctions',
   'SecureLinkFixer',
   'SemanticMediaWiki',
   'SemanticScribunto',
