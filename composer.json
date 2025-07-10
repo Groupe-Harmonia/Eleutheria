@@ -6,6 +6,7 @@
     "mediawiki/semantic-scribunto": "dev-master",
     "mediawiki/template-styles": "1.43.0",
     "octfx/template-styles-extender": "dev-develop",
+    "octfx/wiki-seo": "dev-master",
     "starcitizentools/citizen-skin": "v3.4.0"
   },
   "config": {
