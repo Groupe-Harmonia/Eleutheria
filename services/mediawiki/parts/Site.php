@@ -31,6 +31,10 @@ $wgUseInstantCommons = true;
 $wgUseImageMagick = true;
 $wgImageMagickConvertCommand = "/usr/bin/convert";
 
+$wgFileExtensions[] = 'svg';
+$wgAllowTitlesInSVG = true;
+$wgSVGNativeRendering = true;
+
 // Rights
 
 $wgRightsPage = ''; # Set to the title of a wiki page that describes your license/copyright

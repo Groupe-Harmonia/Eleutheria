@@ -1,8 +1,8 @@
 services:
   app:
-    # build:
-    #   context: .
-    image: ghcr.io/groupe-harmonia/eleutheria:latest
+    build:
+      context: .
+    # image: ghcr.io/groupe-harmonia/eleutheria:latest
     restart: unless-stopped
     labels:
       - com.centurylinklabs.watchtower.enable=false
@@ -66,6 +66,8 @@ services:
       - db-password
       - db-ro-password
 
+    ports:
+      - "127.0.0.1:3306:3306"
     volumes:
       - db:/var/lib/mysql
       - ./services/mariadb/init-user.sh:/docker-entrypoint-initdb.d/init-user.sh

@@ -22,6 +22,7 @@ wfLoadExtensions([
   'Linter',
   'LoginNotify',
   'OATHAuth',
+  'ParserFunctions',
   'SecureLinkFixer',
   'SemanticMediaWiki',
   'SemanticScribunto',
@@ -35,6 +36,7 @@ wfLoadExtensions([
   'Thanks',
   'VisualEditor',
   'WikiEditor',
+  'WikiSEO',
 ]);
 
 /**
@@ -191,3 +193,13 @@ $wgDefaultUserOptions['visualeditor-newwikitext'] = 1;
 
 $wgVisualEditorUseSingleEditTab = true;
 $wgDefaultUserOptions['visualeditor-editor'] = 'visualeditor';
+
+/**
+ * Extension: WikiSEO
+ */
+$wgWikiSeoDefaultLanguange = 'fr-fr';
+// Disable wgLogo as fallback image in embed
+$wgWikiSeoDisableLogoFallbackImage = true;
+// Use TextExtracts description
+$wgWikiSeoEnableAutoDescription = true;
+$wgWikiSeoTryCleanAutoDescription = true;
