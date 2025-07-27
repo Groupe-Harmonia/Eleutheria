@@ -92,6 +92,12 @@ if (getenv("ELEUTHERIA_APP_TURNSTILE_SITE_KEY") && getenv("ELEUTHERIA_APP_TURNST
 }
 ;
 
+/**
+ * Extension: DiscordNotifications
+ */
+$wgDiscordIncomingWebhookUrl = "{$_ENV['ELEUTHERIA_DISCORD_WEBHOOK_URL']}";
+$wgDiscordFromName = "Wiki Queer";
+$wgDiscordNotificationWikiUrl = "https://wiki.t4t.one/";
 
 /**
  * Extension: DiscussionTools
