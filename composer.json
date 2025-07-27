@@ -2,6 +2,7 @@
   "require": {
     "mediawiki/code-mirror": "1.43.0",
     "mediawiki/checkuser": "1.43.0",
+    "mediawiki/discord": "1.43.0",
     "mediawiki/sandbox-link": "1.43.0",
     "mediawiki/semantic-media-wiki": "~5.0",
     "mediawiki/semantic-scribunto": "dev-master",
@@ -60,6 +61,23 @@
           "type": "git",
           "url": "https://github.com/wikimedia/mediawiki-extensions-CheckUser.git",
           "reference": "REL1_43"
+        }
+      }
+    },
+    {
+      "type": "package",
+      "package": {
+        "name": "mediawiki/discord",
+        "type": "mediawiki-extension",
+        "version": "1.43.0",
+        "dist": {
+          "url": "https://github.com/miraheze/DiscordNotifications/archive/main.zip",
+          "type": "zip"
+        },
+        "source": {
+          "type": "git",
+          "url": "https://github.com/miraheze/DiscordNotifications.git",
+          "reference": "main"
         }
       }
     },
