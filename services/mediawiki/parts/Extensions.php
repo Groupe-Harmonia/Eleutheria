@@ -16,7 +16,7 @@ wfLoadExtensions([
   'Cite',
   'CodeEditor',
   'CodeMirror',
-  'DiscordNotifications',
+  'Discord',
   'DiscussionTools',
   'Echo',
   'Interwiki',
