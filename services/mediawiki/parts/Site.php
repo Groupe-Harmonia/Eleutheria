@@ -42,6 +42,9 @@ $wgRightsUrl = 'https://creativecommons.org/licenses/by-sa/4.0/';
 $wgRightsText = 'Creative Commons Attribution-ShareAlike';
 $wgRightsIcon = "$wgResourceBasePath/resources/assets/licenses/cc-by-sa.png";
 
+$wgAutoConfirmAge = 2592000; // 30 days
+$wgAutoConfirmCount = 20;
+
 // Caching
 
 $wgCacheEpoch = 20250405201103;

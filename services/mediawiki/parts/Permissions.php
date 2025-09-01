@@ -13,3 +13,6 @@ $wgGroupPermissions['*']['createaccount'] = true;
 
 // User (Any created account)
 $wgGroupPermissions['user']['oathauth-enable'] = true;
+
+// Administrators
+$wgGroupPermissions['sysop']['interwiki'] = true;
