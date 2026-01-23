@@ -51,8 +51,6 @@ services:
       timeout: 5s
       retries: 5
     depends_on:
-      db:
-        condition: service_healthy
       fluent-bit:
         condition: service_started
 
