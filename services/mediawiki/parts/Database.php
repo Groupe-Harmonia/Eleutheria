@@ -1,9 +1,9 @@
 <?php
 
 $wgDBtype = "mysql";
-$wgDBserver = "db";
+$wgDBserver = "mariadb";
 $wgDBname = "eleutheria";
-$wgDBuser = "app";
+$wgDBuser = "eleutheria";
 $wgDBpassword = file_get_contents('/run/secrets/db-password');
 
 $wgDBprefix = "";
