@@ -4,6 +4,9 @@ services:
     restart: unless-stopped
     labels:
       - com.centurylinklabs.watchtower.enable=false
+    networks:
+      default:
+      access-mariadb:
 
     environment:
       # - ELEUTHERIA_PREPARE_DB=true
@@ -126,6 +129,11 @@ services:
       - grafana_data:/var/lib/grafana
     ports:
       - "127.0.0.1:3000:3000"
+
+networks:
+  default:
+  access-mariadb:
+    external: true
 
 volumes:
   app_images:
