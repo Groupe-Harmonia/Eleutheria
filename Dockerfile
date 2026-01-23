@@ -1,4 +1,4 @@
-FROM mediawiki:1.43.1-fpm AS os-setup
+FROM mediawiki:1.43.6-fpm AS os-setup
 
 RUN apt update && apt upgrade -y; apt install -y \
   net-tools \
